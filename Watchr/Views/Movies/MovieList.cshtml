@@ -1,0 +1,10 @@
+﻿@model Watchr.Models.ListofMovies
+
+@{foreach (var x in Model.listMovies)
+    {
+
+        <p style="padding:20px 20px 0px 0px; font-weight:bold;font-size:large;">@x.title </p>
+        <p style=""><button id="@x.movie_id" type="button" class="btn btn-success">Like</button> <button id="@x.movie_id" type="button" class="btn btn-danger">Dislike</button></p>
+
+    }
+}

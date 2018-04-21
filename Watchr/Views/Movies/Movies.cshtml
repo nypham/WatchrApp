@@ -1,0 +1,42 @@
+﻿@model Watchr.Models.ListofMovies
+<h2>Movies!</h2>
+<div id="partial-view">
+    <p>
+        @Html.Partial("MovieList")
+    </p>
+</div>
+<script>
+
+    $(document).on('click', '.btn-success', function () {
+        alert("hi");
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("AddLiked","Movies")',
+            data: { id: this.id },
+            success: function (partialViewResult) {
+                $("#partial-view").load("/Movies/MovieList");
+            },
+            error: function (xhr, status, error) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+        $(document).on('click', '.btn-danger', function () {
+        alert("hi");
+        $.ajax({
+            type: 'POST',
+            url: '@Url.Action("AddDisliked","Movies")',
+            data: { id: this.id },
+            success: function (partialViewResult) {
+                $("#partial-view").load("/Movies/MovieList");
+            },
+            error: function (xhr, status, error) {
+                alert(xhr.responseText);
+            }
+        });
+    });
+
+
+
+ 
+</script>
