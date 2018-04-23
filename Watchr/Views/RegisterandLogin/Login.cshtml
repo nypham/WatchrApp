@@ -1,0 +1,8 @@
+﻿<h2>Login Here!</h2>
+
+@using (Html.BeginForm("LoginButton", "RegisterandLogin"))
+{
+    <p>User Name: <input type="text" name="userName" /></p>
+    <p>Password: <input type="text" name="pass" /></p>
+    <button type="submit" class="btn btn-success">Login</button>
+}

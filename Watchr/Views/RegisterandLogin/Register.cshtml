@@ -1,0 +1,10 @@
+﻿<h2>Register Your Account!</h2>
+<br /><br />
+@using (Html.BeginForm("RegisterButton", "RegisterandLogin"))
+{
+    <p>User Name: <input type="text" name="userName" /></p>
+    <p>Email: <input type="text" name="email" /></p>
+    <p>Password: <input type="text" name="pass" /></p>
+    <p>Birth Year: <input type="text" name="birthYear" /></p><br />
+    <button type="submit" class="btn btn-success">Register</button>
+}
