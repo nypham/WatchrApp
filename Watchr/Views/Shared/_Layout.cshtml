@@ -37,18 +37,27 @@
     {
                 <li>@Html.ActionLink("Register", "Register", "RegisterandLogin")</li>
                 <li>@Html.ActionLink("Login", "Login", "RegisterandLogin")</li>}
-            @{if(Session["userID"] != null){ 
+                    @{if (Session["userID"] != null)
+        {
                 <li>
                     <a> Welcome @Session["userName"]</a>
-                    
+
+                </li>
+                <li>
+                    <a>@Html.ActionLink("Change Username", "updateUsername", "RegisterandLogin")</a>
+
                 </li>
                 <li>
                     @Html.ActionLink("Logout", "Logout", "RegisterandLogin")
-                    
-                </li>
-                    }
 
-                }
+                </li>
+                <li>
+                    @Html.ActionLink("Admin", "Admin", "Admin")
+
+                </li>
+}
+
+                    }
                 </ul>
             </div>
         </div>

@@ -103,6 +103,16 @@ namespace Watchr.Controllers
             }
             return Json("hi");
         }
+
+        public ActionResult NewMovies()
+        {
+            return View();
+        }
+
+        public ActionResult Trending()
+        {
+            return View();
+        }
     }
 
 }

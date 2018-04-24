@@ -221,6 +221,9 @@
     <Content Include="Views\Home\LikedList.cshtml" />
     <Content Include="Views\Home\DislikedList.cshtml" />
     <Content Include="Views\Admin\Admin.cshtml" />
+    <Content Include="Views\Home\NewMovies.cshtml" />
+    <Content Include="Views\Home\Trending.cshtml" />
+    <Content Include="Views\RegisterandLogin\updateUsername.cshtml" />
     <None Include="Watchr.dbml.layout">
       <DependentUpon>Watchr.dbml</DependentUpon>
     </None>

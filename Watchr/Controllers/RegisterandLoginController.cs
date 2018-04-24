@@ -22,6 +22,19 @@ namespace Watchr.Controllers
 
             return View();
         }
+        public ActionResult updateUsername()
+        {
+            return View();
+        }
+        public void updateUsernameDB(string userName)
+        {
+            using (WatchrDataContext db = new WatchrDataContext())
+            {
+                var temp = db.Users.Where(x => x.user_id == (int)Session["userID"]).SingleOrDefault();
+                temp.user_name = userName;
+                db.SubmitChanges();
+            }
+        }
         [HttpPost]
         public ActionResult LoginButton(string userName,string pass)
         {

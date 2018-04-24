@@ -1,0 +1,17 @@
+﻿<div id="form" style="margin: 20px auto; width: 40%; height: auto; padding: 20px; background-color: #EFEFEF; text-align: center; border-radius: 10px;">
+    <h2 style="margin-top: 10px;">Update username</h2>
+    @using (Html.BeginForm("updateUsernameDB", "RegisterandLogin"))
+    {
+        <div style="margin: 10px 25%;"><input type="text" name="userName" class="form-control" placeholder="New Username" required /></div>
+        <button id="submit" type="submit" class="btn btn-success">Update</button>
+    }
+</div>
+<div style="display:none;" id="done">Your username has been updated!</div>
+
+
+<script>
+    $(document).on('click', '#submit', function () {
+        $("#form").css("display", "none");
+        $("#done").css("display", "block");
+    });
+</script>
