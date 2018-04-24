@@ -33,8 +33,22 @@
                     <li>@Html.ActionLink("Feedback", "Feedback", "Feedback")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Register", "Register", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                    @if (Session["userID"] == null)
+    {
+                <li>@Html.ActionLink("Register", "Register", "RegisterandLogin")</li>
+                <li>@Html.ActionLink("Login", "Login", "RegisterandLogin")</li>}
+            @{if(Session["userID"] != null){ 
+                <li>
+                    Welcome @Session["userName"]
+                    
+                </li>
+                <li>
+                    @Html.ActionLink("Logout", "Logout", "RegisterandLogin")
+                    
+                </li>
+                    }
+
+                }
                 </ul>
             </div>
         </div>

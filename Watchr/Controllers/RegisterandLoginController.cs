@@ -10,6 +10,7 @@ namespace Watchr.Controllers
     {
         public string userName;
         public int userID;
+        public string password;
         // GET: RegisterandLogin
         public ActionResult Register()
         {
@@ -27,12 +28,18 @@ namespace Watchr.Controllers
             using (WatchrDataContext wdc = new WatchrDataContext())
             {
                 userID = wdc.Users.Where(x=>x.user_name ==userName && x.user_password==pass).Select(x=>x.user_id).SingleOrDefault();
-                this.userName = userName;
+                password = wdc.Users.Where(x => x.user_name == userName && x.user_password == pass).Select(x => x.user_password).SingleOrDefault();
+                if (password == pass) { 
+                Session["userName"] = userName;
+                Session["userID"] = userID;
             }
-            return RedirectToAction("Home");
+                else { return RedirectToAction("Login","RegisterandLogin"); }
+            }
+            return RedirectToAction("Index", "Home");
         }
+
         [HttpPost]
-        public ActionResult RegisterButton(string userName, string email, string pass, string birthYear)
+        public ActionResult RegisterButton(string userName, string email, string pass, int birthYear)
         {
             User user = new User { user_name = userName, user_email = email, user_birthyear = birthYear, user_password = pass };
             using (WatchrDataContext wdc = new WatchrDataContext())
@@ -41,6 +48,12 @@ namespace Watchr.Controllers
                 wdc.SubmitChanges();
             }
             return RedirectToAction("Login");
+        }
+        public ActionResult Logout()
+        {
+            Session["userID"] = null;
+            Session["userName"] = null;
+            return RedirectToAction("Index","Home");
         }
     }
 }

@@ -42,6 +42,9 @@ namespace Watchr
     partial void InsertFeedback(Feedback instance);
     partial void UpdateFeedback(Feedback instance);
     partial void DeleteFeedback(Feedback instance);
+    partial void InsertUser(User instance);
+    partial void UpdateUser(User instance);
+    partial void DeleteUser(User instance);
     #endregion
 		
 		public WatchrDataContext() : 
@@ -72,14 +75,6 @@ namespace Watchr
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<User> Users
-		{
-			get
-			{
-				return this.GetTable<User>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Movie> Movies
@@ -113,103 +108,12 @@ namespace Watchr
 				return this.GetTable<Feedback>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
-	public partial class User
-	{
 		
-		private int _user_id;
-		
-		private string _user_name;
-		
-		private string _user_email;
-		
-		private string _user_password;
-		
-		private string _user_birthyear;
-		
-		public User()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", AutoSync=AutoSync.Always, DbType="Int NOT NULL IDENTITY", IsDbGenerated=true)]
-		public int user_id
+		public System.Data.Linq.Table<User> Users
 		{
 			get
 			{
-				return this._user_id;
-			}
-			set
-			{
-				if ((this._user_id != value))
-				{
-					this._user_id = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NVarChar(50)")]
-		public string user_name
-		{
-			get
-			{
-				return this._user_name;
-			}
-			set
-			{
-				if ((this._user_name != value))
-				{
-					this._user_name = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_email", DbType="NVarChar(50)")]
-		public string user_email
-		{
-			get
-			{
-				return this._user_email;
-			}
-			set
-			{
-				if ((this._user_email != value))
-				{
-					this._user_email = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_password", DbType="NVarChar(50)")]
-		public string user_password
-		{
-			get
-			{
-				return this._user_password;
-			}
-			set
-			{
-				if ((this._user_password != value))
-				{
-					this._user_password = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_birthyear", DbType="NVarChar(50)")]
-		public string user_birthyear
-		{
-			get
-			{
-				return this._user_birthyear;
-			}
-			set
-			{
-				if ((this._user_birthyear != value))
-				{
-					this._user_birthyear = value;
-				}
+				return this.GetTable<User>();
 			}
 		}
 	}
@@ -581,6 +485,164 @@ namespace Watchr
 					this._user_id = value;
 					this.SendPropertyChanged("user_id");
 					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.[User]")]
+	public partial class User : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _user_id;
+		
+		private string _user_name;
+		
+		private string _user_email;
+		
+		private string _user_password;
+		
+		private System.Nullable<int> _user_birthyear;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    partial void Onuser_nameChanging(string value);
+    partial void Onuser_nameChanged();
+    partial void Onuser_emailChanging(string value);
+    partial void Onuser_emailChanged();
+    partial void Onuser_passwordChanging(string value);
+    partial void Onuser_passwordChanged();
+    partial void Onuser_birthyearChanging(System.Nullable<int> value);
+    partial void Onuser_birthyearChanged();
+    #endregion
+		
+		public User()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_name", DbType="NVarChar(50)")]
+		public string user_name
+		{
+			get
+			{
+				return this._user_name;
+			}
+			set
+			{
+				if ((this._user_name != value))
+				{
+					this.Onuser_nameChanging(value);
+					this.SendPropertyChanging();
+					this._user_name = value;
+					this.SendPropertyChanged("user_name");
+					this.Onuser_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_email", DbType="NVarChar(50)")]
+		public string user_email
+		{
+			get
+			{
+				return this._user_email;
+			}
+			set
+			{
+				if ((this._user_email != value))
+				{
+					this.Onuser_emailChanging(value);
+					this.SendPropertyChanging();
+					this._user_email = value;
+					this.SendPropertyChanged("user_email");
+					this.Onuser_emailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_password", DbType="NVarChar(50)")]
+		public string user_password
+		{
+			get
+			{
+				return this._user_password;
+			}
+			set
+			{
+				if ((this._user_password != value))
+				{
+					this.Onuser_passwordChanging(value);
+					this.SendPropertyChanging();
+					this._user_password = value;
+					this.SendPropertyChanged("user_password");
+					this.Onuser_passwordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_birthyear", DbType="Int")]
+		public System.Nullable<int> user_birthyear
+		{
+			get
+			{
+				return this._user_birthyear;
+			}
+			set
+			{
+				if ((this._user_birthyear != value))
+				{
+					this.Onuser_birthyearChanging(value);
+					this.SendPropertyChanging();
+					this._user_birthyear = value;
+					this.SendPropertyChanged("user_birthyear");
+					this.Onuser_birthyearChanged();
 				}
 			}
 		}

@@ -14,6 +14,7 @@ namespace Watchr.Controllers
 
         public ActionResult Movies()
         {
+            if (Session["userID"] != null) { 
 
             List<Movies> keptMovies = new List<Movies>();
 
@@ -21,8 +22,8 @@ namespace Watchr.Controllers
             {
 
                 var movieIds = wdc.Movies.ToList();
-                var disliked = wdc.DislikedMovies.Where(x => x.user_id == 1).Select(x => x.movie_id).ToList();
-                var liked = wdc.LikedMovies.Where(x => x.user_id == 1).Select(x => x.movie_id).ToList();
+                var disliked = wdc.DislikedMovies.Where(x => x.user_id == (int)Session["userID"]).Select(x => x.movie_id).ToList();
+                var liked = wdc.LikedMovies.Where(x => x.user_id == (int)Session["userID"]).Select(x => x.movie_id).ToList();
                 foreach (var x in movieIds)
                 {
                     if (!disliked.Contains(x.ID) && !liked.Contains(x.ID))
@@ -36,6 +37,8 @@ namespace Watchr.Controllers
 
 
             return View(movieList);
+            }
+            else { return RedirectToAction("Login", "RegisterandLogin"); }
         }
         [HttpPost]
         public ActionResult AddLiked(int id)
@@ -64,14 +67,15 @@ namespace Watchr.Controllers
         }
         public ActionResult MovieList()
         {
+            
             List<Movies> keptMovies = new List<Movies>();
 
             using (WatchrDataContext wdc = new WatchrDataContext())
             {
 
                 var movieIds = wdc.Movies.ToList();
-                var disliked = wdc.DislikedMovies.Where(x => x.user_id == 1).Select(x => x.movie_id).ToList();
-                var liked = wdc.LikedMovies.Where(x => x.user_id == 1).Select(x => x.movie_id).ToList();
+                var disliked = wdc.DislikedMovies.Where(x => x.user_id == (int)Session["userID"]).Select(x => x.movie_id).ToList();
+                var liked = wdc.LikedMovies.Where(x => x.user_id == (int)Session["userID"]).Select(x => x.movie_id).ToList();
                 foreach (var x in movieIds)
                 {
                     if (!disliked.Contains(x.ID) && !liked.Contains(x.ID))

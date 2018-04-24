@@ -11,20 +11,28 @@ namespace Watchr.Controllers
         // GET: Feedback
         public ActionResult Feedback()
         {
-            return View();
+            if (Session["userID"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "RegisterandLogin");
+            }
         }
         [HttpPost]
         public ActionResult SendFeedback(string comments,string rating)
         {
-            using (WatchrDataContext wdc = new WatchrDataContext())
-            {
-                
-                Feedback fb = new Feedback {fb_comments= comments,fb_rating=Convert.ToInt32(rating),user_id=1};
-                wdc.Feedbacks.InsertOnSubmit(fb);
-                wdc.SubmitChanges();
-            }
-            return PartialView();
+            
+                using (WatchrDataContext wdc = new WatchrDataContext())
+                {
 
+                    Feedback fb = new Feedback { fb_comments = comments, fb_rating = Convert.ToInt32(rating), user_id = (int)Session["userID"] };
+                    wdc.Feedbacks.InsertOnSubmit(fb);
+                    wdc.SubmitChanges();
+                }
+                return PartialView();
+            
         }
     }
 }
