@@ -9,13 +9,13 @@
   <Table Name="dbo.LikedMovies" Member="LikedMovies">
     <Type Name="LikedMovy">
       <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="movie_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="movie_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.DislikedMovies" Member="DislikedMovies">
     <Type Name="DislikedMovy">
       <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="movie_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="movie_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.Feedback" Member="Feedbacks">

@@ -39,7 +39,7 @@
                 <li>@Html.ActionLink("Login", "Login", "RegisterandLogin")</li>}
             @{if(Session["userID"] != null){ 
                 <li>
-                    Welcome @Session["userName"]
+                    <a> Welcome @Session["userName"]</a>
                     
                 </li>
                 <li>

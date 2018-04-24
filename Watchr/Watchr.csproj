@@ -149,6 +149,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -160,6 +161,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DBModel.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\Movies.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -215,6 +218,9 @@
     <Content Include="Views\Feedback\SendFeedback.cshtml" />
     <Content Include="Views\RegisterandLogin\Register.cshtml" />
     <Content Include="Views\RegisterandLogin\Login.cshtml" />
+    <Content Include="Views\Home\LikedList.cshtml" />
+    <Content Include="Views\Home\DislikedList.cshtml" />
+    <Content Include="Views\Admin\Admin.cshtml" />
     <None Include="Watchr.dbml.layout">
       <DependentUpon>Watchr.dbml</DependentUpon>
     </None>

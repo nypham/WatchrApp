@@ -1,0 +1,15 @@
+﻿@model Watchr.Models.HomeViewModel
+
+
+<div style=" border-radius: 10px;background-color: #EFEFEF;width:65%;margin: 0 15% 0 5%; text-align:center;padding:5px;">
+    <h3>Your Disliked Movies</h3>
+    @foreach (var x in Model.dm)
+    {
+    <p>
+        @x.title   <button onclick="DeleteDislikedMovie(@x.ID)" id="@x.ID" style="background-color:#EFEFEF; border-color:#EFEFEF;padding:0px;"type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </p>
+    }
+
+</div>

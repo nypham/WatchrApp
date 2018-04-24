@@ -249,7 +249,7 @@ namespace Watchr
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_movie_id", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_movie_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int movie_id
 		{
 			get
@@ -335,7 +335,7 @@ namespace Watchr
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_movie_id", DbType="Int NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_movie_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
 		public int movie_id
 		{
 			get

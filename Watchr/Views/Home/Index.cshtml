@@ -1,12 +1,56 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿@model Watchr.Models.HomeViewModel
 
-<div style="margin: 20px auto; width: 90%; height: auto; padding: 20px; background-color: #EFEFEF; text-align: center; border-radius: 10px;">
-    <p style=" font-size: 25px; font-weight: bold; ">Let Watchr find movies for you!</p>
-    <p style="font-size: 20px;">How it works:</p>
-    <p>1. Create your account with us.</p>
-    <p>2. We'll show you a few movies, and you tell us which ones you like and dislike.</p>
-    <p>3. Based on the movies you like and dislike, we'll recommend new movies for you to watch!</p>
-    <p style="font-size: 20px;">It's that simple!</p>
-</div>
+@if (Session["userID"] == null)
+{
+    <div style="margin: 20px auto; width: 90%; height: auto; padding: 20px; background-color: #EFEFEF; text-align: center; border-radius: 10px;">
+        <p style=" font-size: 25px; font-weight: bold; ">Let Watchr find movies for you!</p>
+        <p style="font-size: 20px;">How it works:</p>
+        <p>1. Create your account with us.</p>
+        <p>2. We'll show you a few movies, and you tell us which ones you like and dislike.</p>
+        <p>3. Based on the movies you like and dislike, we'll recommend new movies for you to watch!</p>
+        <p style="font-size: 20px;">It's that simple!</p>
+    </div>
+}
+@if (Session["userID"] != null)
+{
+    <h1 style="text-align:center;">Welcome, @Session["userName"]!</h1><br />
+    <h2 style="text-align:center;">Today's Recommendation: Black Panther (2018)</h2><br />
+    <div class="row">
+    <div class="col-sm-6" id="partial-view" style="text-align: center">
+        @Html.Partial("LikedList")
+    </div>
+    <div class="col-sm-6" id="partial-view1" style="text-align: center">
+        @Html.Partial("DislikedList")
+    </div>
+        </div>
+}
+<script>
+    function DeleteLikedMovie(id) {
+ $.ajax({
+            type: 'POST',
+            url: '@Url.Action("DeleteLiked","Home")',
+            data: { id: id },
+            success: function (partialViewResult) {
+                $("#partial-view").load("/Home/LikedList");
+
+            },
+            error: function (xhr, status, error) {
+                alert(xhr.responseText);
+            }
+        });
+    };
+        function DeleteDislikedMovie(id) {
+ $.ajax({
+            type: 'POST',
+            url: '@Url.Action("DeleteDisliked","Home")',
+            data: { id: id },
+            success: function (partialViewResult) {
+                $("#partial-view1").load("/Home/DislikedList");
+
+            },
+            error: function (xhr, status, error) {
+                alert(xhr.responseText);
+            }
+        });
+    };
+</script>

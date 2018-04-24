@@ -1,0 +1,130 @@
+﻿@model Watchr.Models.DBModel
+<!-- MOVIE TABLE REPRESENTATION-->
+<br />
+<h3>Movies Table</h3>
+<div style="background-color: #EFEFEF; border-radius: 10px; padding: 10px;">
+    <table style="margin-bottom: 0px;" class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Movie Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{foreach (var x in Model.movies)
+                {
+                    <tr>
+                        <td>@x.ID</td>
+                        <td>@x.title</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- USER TABLE REPRESENTATION-->
+<br />
+<h3>Users Table</h3>
+<div style="background-color: #EFEFEF; border-radius: 10px; padding: 10px;">
+    <table style="margin-bottom: 0px;" class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Birth Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{foreach (var x in Model.users)
+                {
+                    <tr>
+                        <td>@x.user_id</td>
+                        <td>@x.user_name</td>
+                        <td>@x.user_email</td>
+                        <td>@x.user_password</td>
+                        <td>@x.user_birthyear</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- FEEDBACK TABLE REPRESENTATION-->
+<br />
+<h3>Feedback Table</h3>
+<div style="background-color: #EFEFEF; border-radius: 10px; padding: 10px;">
+    <table style="margin-bottom: 0px;" class="table table-hover">
+        <thead>
+            <tr>
+                <th>Feedback ID</th>
+                <th>Comments</th>
+                <th>Rating</th>
+                <th>User ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{foreach (var x in Model.feedbacks)
+                {
+                    <tr>
+                        <td>@x.fb_id</td>
+                        <td>@x.fb_comments</td>
+                        <td>@x.fb_rating</td>
+                        <td>@x.user_id</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- LIKEDMOVIES TABLE REPRESENTATION-->
+<br />
+<h3>Liked Movies Table</h3>
+<div style="background-color: #EFEFEF; border-radius: 10px; padding: 10px;">
+    <table style="margin-bottom: 0px;" class="table table-hover">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Movie ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{foreach (var x in Model.lm)
+                {
+                    <tr>
+                        <td>@x.user_id</td>
+                        <td>@x.movie_id</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- DISLIKEDMOVIES TABLE REPRESENTATION-->
+<br />
+<h3>Disliked Movies Table</h3>
+<div style="background-color: #EFEFEF; border-radius: 10px; padding: 10px;">
+    <table style="margin-bottom: 0px;" class="table table-hover">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Movie ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{foreach (var x in Model.dm)
+                {
+                    <tr>
+                        <td>@x.user_id</td>
+                        <td>@x.movie_id</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

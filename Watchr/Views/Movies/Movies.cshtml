@@ -8,7 +8,7 @@
 <script>
 
     $(document).on('click', '.btn-success', function () {
-        alert("hi");
+
         $.ajax({
             type: 'POST',
             url: '@Url.Action("AddLiked","Movies")',
@@ -21,8 +21,7 @@
             }
         });
     });
-        $(document).on('click', '.btn-danger', function () {
-        alert("hi");
+    $(document).on('click', '.btn-danger', function () {
         $.ajax({
             type: 'POST',
             url: '@Url.Action("AddDisliked","Movies")',
