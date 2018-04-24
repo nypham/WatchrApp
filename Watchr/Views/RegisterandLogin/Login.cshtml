@@ -1,8 +1,9 @@
-﻿<h2>Login Here!</h2>
-
-@using (Html.BeginForm("LoginButton", "RegisterandLogin"))
-{
-    <p>User Name: <input type="text" name="userName" /></p>
-    <p>Password: <input type="text" name="pass" /></p>
-    <button type="submit" class="btn btn-success">Login</button>
-}
+﻿<div style="margin: 20px auto; width: 40%; height: auto; padding: 20px; background-color: #EFEFEF; text-align: center; border-radius: 10px;">
+    <h2 style="margin-top: 10px;">Login!</h2>
+    @using (Html.BeginForm("LoginButton", "RegisterandLogin"))
+    {
+        <div style="margin: 10px 25%;"><input type="text" name="userName" class="form-control" placeholder="Username" required /></div>
+        <div style="margin: 10px 25%;"><input type="text" name="pass" class="form-control" placeholder="Password" required /></div>
+        <button type="submit" class="btn btn-success">Login</button>
+    }
+</div>
