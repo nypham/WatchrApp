@@ -45,7 +45,7 @@ namespace Watchr.Controllers
         {
             using (WatchrDataContext wdc = new WatchrDataContext())
             {
-                LikedMovy lm = new LikedMovy {movie_id=id,user_id=1 };
+                LikedMovy lm = new LikedMovy {movie_id=id,user_id=(int)Session["userID"] };
                 wdc.LikedMovies.InsertOnSubmit(lm);
                 wdc.SubmitChanges();
                 
@@ -58,7 +58,7 @@ namespace Watchr.Controllers
         {
             using (WatchrDataContext wdc = new WatchrDataContext())
             {
-                DislikedMovy dm = new DislikedMovy { movie_id = id, user_id = 1 };
+                DislikedMovy dm = new DislikedMovy { movie_id = id, user_id = (int)Session["userID"] };
                 wdc.DislikedMovies.InsertOnSubmit(dm);
                 wdc.SubmitChanges();
             }
