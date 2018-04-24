@@ -1,10 +1,15 @@
-﻿<h2>Register Your Account!</h2>
-<br /><br />
-@using (Html.BeginForm("RegisterButton", "RegisterandLogin"))
-{
-    <p>User Name: <input type="text" name="userName" /></p>
-    <p>Email: <input type="text" name="email" /></p>
-    <p>Password: <input type="text" name="pass" /></p>
-    <p>Birth Year: <input type="text" name="birthYear" /></p><br />
-    <button type="submit" class="btn btn-success">Register</button>
-}
+﻿      <div style="margin: 20px auto; width: 50%; height: auto; padding: 20px; background-color: #EFEFEF; text-align: center; border-radius: 10px;">
+    <h2 style="margin-top: 10px;">Register Your Account!</h2>
+    @using (Html.BeginForm("RegisterButton", "RegisterandLogin"))
+    {
+        <div style="margin: 10px 25%;">
+            <input type="text" name="userName" placeholder="Username" class="form-control" required />
+        </div>
+        <div style="margin: 10px 25%;">
+            <input type="text" name="email" placeholder="Email" class="form-control" required />
+        </div>
+        <div style="margin: 10px 25%;"><input type="text" name="pass" placeholder="Password" class="form-control" required /></div>
+        <div style="margin: 10px 25%;"><input type="text" name="birthYear" placeholder="Birth Year" class="form-control" required /></div>
+        <button type="submit" class="btn btn-success">Register</button>
+    }
+</div>
